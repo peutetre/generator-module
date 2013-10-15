@@ -21,15 +21,18 @@ describe('module generator', function () {
 
   it('creates expected files', function (done) {
     var expected = [
-      // add files you expect to exist here.
-      '.jshintrc',
-      '.editorconfig'
+      'package.json',
+      'lib/index.js',
+      'README.md'
     ];
 
     helpers.mockPrompt(this.app, {
-      'someOption': true
+      'githubUser': 'peutetre',
+      'moduleName': 'test',
+      'moduleDescription': 'This is a test',
+      'dependencies': 'q, zanimo, qajax'
     });
-    this.app.options['skip-install'] = true;
+
     this.app.run({}, function () {
       helpers.assertFiles(expected);
       done();

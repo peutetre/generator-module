@@ -52,20 +52,22 @@ ModuleGenerator.prototype.askFor = function askFor() {
     type:'input',
     name:'moduleDescription',
     message:'Can you give a description of your module?',
-    default: null
+    default: ""
   },
   {
     type:'input',
     name:'dependencies',
     message:'Do you want to add dependencies? (sepatate modules with comma)',
-    default: null
+    default: ""
   }];
 
   this.prompt(prompts, function (props) {
     this.githubUser = props.githubUser;
     this.moduleName = props.moduleName;
     this.moduleDescription = props.moduleDescription;
-    this.dependencies = props.dependencies.split(',');
+    this.dependencies = props.dependencies.split(',').filter(function (dep) {
+        return dep.length > 0;
+    });
 
     cb();
   }.bind(this));
@@ -86,8 +88,5 @@ ModuleGenerator.prototype.lib = function app() {
   this.mkdir('lib');
   this.template('lib/_index.js', 'lib/index.js');
   this.template('_package.json', 'package.json');
-};
-
-ModuleGenerator.prototype.projectfiles = function projectfiles() {
-  this.copy('travis.yml', '.travis.yml');
+  this.template('_README.md', 'README.md');
 };
