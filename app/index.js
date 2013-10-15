@@ -2,13 +2,32 @@
 var util = require('util');
 var path = require('path');
 var yeoman = require('yeoman-generator');
+var GitHubApi = require('github');
 
+var githubOptions = {
+  version: '3.0.0'
+};
+var github = new GitHubApi(githubOptions);
+
+var githubUserInfo = function (name, cb) {
+  github.user.getFrom({
+    user: name
+  }, function (err, res) {
+    if (err) {
+      throw err;
+    }
+    cb(JSON.parse(JSON.stringify(res)));
+  });
+};
 
 var ModuleGenerator = module.exports = function ModuleGenerator(args, options, config) {
   yeoman.generators.Base.apply(this, arguments);
 
   this.on('end', function () {
-    this.installDependencies({ skipInstall: options['skip-install'] });
+    this.installDependencies({
+        npm: true,
+        bower: false
+    });
   });
 
   this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../package.json')));
@@ -19,32 +38,56 @@ util.inherits(ModuleGenerator, yeoman.generators.Base);
 ModuleGenerator.prototype.askFor = function askFor() {
   var cb = this.async();
 
-  // have Yeoman greet the user.
-  console.log(this.yeoman);
-
   var prompts = [{
-    type: 'confirm',
-    name: 'someOption',
-    message: 'Would you like to enable this option?',
-    default: true
+    type:'input',
+    name:'githubUser',
+    message:'What is your github username?'
+  },{
+    type:'input',
+    name:'moduleName',
+    message:'What is the name of the module?',
+    default: 'toto'
+  },
+  {
+    type:'input',
+    name:'moduleDescription',
+    message:'Can you give a description of your module?',
+    default: null
+  },
+  {
+    type:'input',
+    name:'dependencies',
+    message:'Do you want to add dependencies? (sepatate modules with comma)',
+    default: null
   }];
 
   this.prompt(prompts, function (props) {
-    this.someOption = props.someOption;
+    this.githubUser = props.githubUser;
+    this.moduleName = props.moduleName;
+    this.moduleDescription = props.moduleDescription;
+    this.dependencies = props.dependencies.split(',');
 
     cb();
   }.bind(this));
 };
 
-ModuleGenerator.prototype.app = function app() {
-  this.mkdir('app');
-  this.mkdir('app/templates');
+ModuleGenerator.prototype.userInfo = function userInfo() {
+  var done = this.async();
 
-  this.copy('_package.json', 'package.json');
-  this.copy('_bower.json', 'bower.json');
+  githubUserInfo(this.githubUser, function (res) {
+    this.realname = res.name;
+    this.email = res.email;
+    this.githubUrl = res.html_url;
+    done();
+  }.bind(this));
+};
+
+ModuleGenerator.prototype.lib = function app() {
+  this.mkdir('lib');
+  this.template('lib/_index.js', 'lib/index.js');
+  this.template('_package.json', 'package.json');
 };
 
 ModuleGenerator.prototype.projectfiles = function projectfiles() {
-  this.copy('editorconfig', '.editorconfig');
-  this.copy('jshintrc', '.jshintrc');
+  this.copy('travis.yml', '.travis.yml');
 };

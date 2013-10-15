@@ -1,6 +1,6 @@
 {
   "name": "generator-module",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A Yeoman generator for Browserify modules",
   "keywords": [
     "yeoman-generator",
@@ -22,7 +22,8 @@
     "test": "mocha"
   },
   "dependencies": {
-    "yeoman-generator": "~0.13.0"
+    "yeoman-generator": "~0.13.0",
+    "github": "~0.1.8"
   },
   "devDependencies": {
     "mocha": "~1.12.0"

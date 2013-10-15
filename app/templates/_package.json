@@ -1,5 +1,35 @@
 {
-  "name": "package",
-  "version": "0.0.0",
-  "dependencies": {}
+  "name": "<%= _.slugify(moduleName) %>",
+  "version": "0.0.1",
+  "description":"<%= moduleDescription %>",
+  "author": {
+    "name": "<%= realname %>",
+    "email": "<%= email %>",
+    "url": "<%= githubUrl %>"
+  },
+  "keywords": [ ],
+  "homepage": "<%= githubUrl %>/<%= _.slugify(moduleName) %>",
+  "bugs": "<%= githubUrl %>/<%= _.slugify(moduleName) %>/issues",
+  "main": "lib/main.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/<%= githubUser %>/<%= _.slugify(moduleName) %>.git"
+  },
+  "scripts": {
+    "test": "mocha",
+    "prod":"echo TODO",
+    "build":"echo TODO"
+  },
+  "dependencies": {
+    <% dependencies.forEach(function (dep, idx) { %>"<%= (dep.trim()) %>" : "*"<%= (idx === dependencies.length-1 ? '' : ',\n   ') %> <% }) %>
+  },
+  "devDependencies": {
+    "mocha": "~1.12.0",
+    "browserify": "2.29.1"
+  },
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ]
 }
