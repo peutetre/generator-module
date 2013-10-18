@@ -1,5 +1,7 @@
 #  <%= moduleName %> [![Build Status](https://secure.travis-ci.org/<%= githubUser %>/<%= _.slugify(moduleName) %>.png?branch=master)](https://travis-ci.org/<%= githubUser %>/<%= _.slugify(moduleName) %>)
 
+[![SauceLabs Status](https://saucelabs.com/browser-matrix/<%= saucelabUser %>.svg)](https://saucelabs.com/u/<%= saucelabUser %>)
+
 <%= moduleDescription %>
 
 ## Getting Started
