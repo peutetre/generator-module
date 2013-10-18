@@ -9,8 +9,7 @@
         <%= moduleName %> = definition();
     }
 })(function () {
-    // FIXME
-    // add the module code here...
-
-    return /* FIXME here, the module impl. */;
+    return function () {
+        retun "this is module <%= moduleName %>";
+    };
 });
