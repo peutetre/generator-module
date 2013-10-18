@@ -89,6 +89,7 @@ ModuleGenerator.prototype.lib = function app() {
   this.template('lib/_index.js', 'lib/index.js');
   this.template('_package.json', 'package.json');
   this.template('_README.md', 'README.md');
+  this.template('_LICENSE', 'LICENSE');
 };
 
 ModuleGenerator.prototype.test = function app() {
