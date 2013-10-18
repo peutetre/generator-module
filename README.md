@@ -1,6 +1,6 @@
 # generator-module [![Build Status](https://secure.travis-ci.org/peutetre/generator-module.png?branch=master)](https://travis-ci.org/peutetre/generator-module)
 
-A [Yeoman](http://yeoman.io) generator for [Browserify](http://browserify.org)/`old school import style` modules
+A [Yeoman](http://yeoman.io) generator for __[Browserify](http://browserify.org)__/__old school import style__ modules
 
 ## Getting Started
 
@@ -74,9 +74,9 @@ npm run test-sauce
 
 ## ChangeLog
 
-#### `0.0.1` 2013-10-15
+#### v0.0.1 2013-10-18
 
-* generate package.json + lib/index.js files
+* minimal release
 
 ## License
 
