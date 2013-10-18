@@ -34,6 +34,7 @@ my-module
 |   `-- index.js
 |-- test
 |   `-- test.js
+|   `-- index.html
 |-- example
 |   |-- package.json
 |   |-- example.js
@@ -75,11 +76,13 @@ Open example/index.html in your favorite browser
 
 ### Test module
 
-Test module with mocha on a browser
+Build tests with
 
 ```
-npm run test
+npm run build-test
 ```
+
+Then open `test/index.html` to run the tests.
 
 Test module on saucelabs with mocha
 
