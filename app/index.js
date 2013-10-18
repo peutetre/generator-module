@@ -97,3 +97,9 @@ ModuleGenerator.prototype.test = function app() {
   this.template('test/_test.js', 'test/test.js');
   this.template('test/_index.html', 'test/index.html');
 };
+
+ModuleGenerator.prototype.example = function app() {
+  this.mkdir('example');
+  this.template('example/_example.js', 'example/example.js');
+  this.template('example/_index.html', 'example/index.html');
+};

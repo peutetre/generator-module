@@ -16,7 +16,8 @@
     "url": "git://github.com/<%= githubUser %>/<%= _.slugify(moduleName) %>.git"
   },
   "scripts": {
-    "build-test": "./node_modules/browserify/bin/cmd.js ./test/test.js -o test/main.js --debug"
+    "build-test": "./node_modules/browserify/bin/cmd.js ./test/test.js -o ./test/main.js --debug",
+    "build-example": "./node_modules/browserify/bin/cmd.js ./example/example.js -o ./example/main.js --debug"
   },
   "dependencies": {
     <% dependencies.forEach(function (dep, idx) { %>"<%= (dep.trim()) %>" : "*"<%= (idx === dependencies.length-1 ? '' : ',\n   ') %> <% }) %>

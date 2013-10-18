@@ -30,7 +30,7 @@ just import the `lib/index.js` script
 Install and build the example
 
 ```
-cd example; npm install; npm run build
+npm run build-example
 ```
 
 Open example/index.html in your favorite browser
