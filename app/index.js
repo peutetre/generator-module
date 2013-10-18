@@ -46,7 +46,7 @@ ModuleGenerator.prototype.askFor = function askFor() {
     type:'input',
     name:'moduleName',
     message:'What is the name of the module?',
-    default: 'toto'
+    default: path.basename(process.cwd())
   },
   {
     type:'input',
