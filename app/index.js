@@ -90,3 +90,9 @@ ModuleGenerator.prototype.lib = function app() {
   this.template('_package.json', 'package.json');
   this.template('_README.md', 'README.md');
 };
+
+ModuleGenerator.prototype.test = function app() {
+  this.mkdir('test');
+  this.template('test/_test.js', 'test/test.js');
+  this.template('test/_index.html', 'test/index.html');
+};

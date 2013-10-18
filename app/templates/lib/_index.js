@@ -10,6 +10,6 @@
     }
 })(function () {
     return function () {
-        retun "this is module <%= moduleName %>";
+        return "this is module <%= moduleName %>";
     };
 });
