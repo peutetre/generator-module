@@ -59,7 +59,7 @@ var aModule = require('my-module');
 aModule();
 ```
 
-##### import the old school style
+#### import the old school style
 
 just import the `lib/index.js` script
 
