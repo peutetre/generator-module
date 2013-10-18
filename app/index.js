@@ -25,8 +25,9 @@ var ModuleGenerator = module.exports = function ModuleGenerator(args, options, c
 
   this.on('end', function () {
     console.log();
-    console.log("Dont' forget to excute to add your saucelab token:");
-    console.log("travis encrypt SAUCE_ACCESS_KEY=your-token -r santiycr/cssify --add");
+    console.log("Dont' forget to excute to add your saucelab username and token:");
+    console.log("travis encrypt SAUCE_USERNAME=your-username --add");
+    console.log("travis encrypt SAUCE_ACCESS_KEY=your-token --add");
     this.installDependencies({
         npm: true,
         bower: false
