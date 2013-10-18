@@ -63,6 +63,16 @@ aModule();
 
 just import the `lib/index.js` script
 
+### Module example
+
+Install and build the example
+
+```
+cd example; npm install; npm run build
+```
+
+Open example/index.html in your favorite browser
+
 ### Test module
 
 Test module with mocha on a browser
