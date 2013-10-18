@@ -22,7 +22,9 @@ $ yo module
 
 ## Generator result
 
-#### Folders and files tree
+Assuming a module named `my-module`
+
+### Folders and files tree
 
 ```
 my-module
@@ -40,37 +42,48 @@ my-module
 `-- travis.yml
 ```
 
-Fetch all dependencies with the command
+### Usage
+
+Fetch all module dependencies with npm
 
 ```
 npm install
 ```
 
-Build the module for developpement (add SourceMap support)
+#### import module via browserify
 
-```
-npm run build
-```
+```javascript
+var aModule = require('my-module');
 
-Build the module for production
-
-```
-npm run prod
+// by default, the generator scarffold a function as default module implementation
+aModule();
 ```
 
-Test for module under phantomjs
+##### import the old school style
+
+just import the `lib/index.js` script
+
+### Test module
+
+Test module with mocha on a browser
 
 ```
-npm run test-phantom
+npm run test
 ```
 
-Test module with saucelabs
+Test module on saucelabs with mocha
 
 ```
 npm run test-sauce
 ```
 
 `npm run test` is an alias for test-saucelabs
+
+## Test generator
+
+```
+npm test
+```
 
 ## ChangeLog
 
