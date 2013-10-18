@@ -16,9 +16,7 @@
     "url": "git://github.com/<%= githubUser %>/<%= _.slugify(moduleName) %>.git"
   },
   "scripts": {
-    "test": "mocha",
-    "prod":"echo TODO",
-    "build":"echo TODO"
+    "test": "mocha"
   },
   "dependencies": {
     <% dependencies.forEach(function (dep, idx) { %>"<%= (dep.trim()) %>" : "*"<%= (idx === dependencies.length-1 ? '' : ',\n   ') %> <% }) %>
