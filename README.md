@@ -87,7 +87,7 @@ Then open `test/index.html` to run the tests.
 Test module on saucelabs with mocha
 
 ```
-npm run test-sauce
+npm test
 ```
 
 ## Test generator
