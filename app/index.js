@@ -24,6 +24,9 @@ var ModuleGenerator = module.exports = function ModuleGenerator(args, options, c
   yeoman.generators.Base.apply(this, arguments);
 
   this.on('end', function () {
+    console.log();
+    console.log("Dont' forget to excute to add your saucelab token:");
+    console.log("travis encrypt SAUCE_ACCESS_KEY=your-token -r santiycr/cssify --add");
     this.installDependencies({
         npm: true,
         bower: false
@@ -59,12 +62,19 @@ ModuleGenerator.prototype.askFor = function askFor() {
     name:'dependencies',
     message:'Do you want to add dependencies? (sepatate modules with comma)',
     default: ""
+  },
+  {
+    type:'input',
+    name:'saucelabUser',
+    message:'What it the saucelabs username for this module?',
+    default: "empty"
   }];
 
   this.prompt(prompts, function (props) {
     this.githubUser = props.githubUser;
     this.moduleName = props.moduleName;
     this.moduleDescription = props.moduleDescription;
+    this.saucelabUser = props.saucelabUser;
     this.dependencies = props.dependencies.split(',').filter(function (dep) {
         return dep.length > 0;
     });
@@ -84,21 +94,28 @@ ModuleGenerator.prototype.userInfo = function userInfo() {
   }.bind(this));
 };
 
-ModuleGenerator.prototype.lib = function app() {
+ModuleGenerator.prototype.lib = function lib() {
   this.mkdir('lib');
   this.template('lib/_index.js', 'lib/index.js');
   this.template('_package.json', 'package.json');
   this.template('_README.md', 'README.md');
   this.template('_LICENSE', 'LICENSE');
+  this.copy('.gitignore', '.gitignore');
 };
 
-ModuleGenerator.prototype.test = function app() {
+ModuleGenerator.prototype.test = function test() {
   this.mkdir('test');
   this.template('test/_test.js', 'test/test.js');
   this.template('test/_index.html', 'test/index.html');
 };
 
-ModuleGenerator.prototype.example = function app() {
+ModuleGenerator.prototype.ci = function saucelabs() {
+  this.template('_Gruntfile.js', 'Gruntfile.js');
+  this.copy('browsers.json', 'browsers.json');
+  this.copy('.travis.yml', '.travis.yml');
+};
+
+ModuleGenerator.prototype.example = function example() {
   this.mkdir('example');
   this.template('example/_example.js', 'example/example.js');
   this.template('example/_index.html', 'example/index.html');
