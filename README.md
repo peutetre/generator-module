@@ -77,8 +77,6 @@ Test module on saucelabs with mocha
 npm run test-sauce
 ```
 
-`npm run test` is an alias for test-saucelabs
-
 ## Test generator
 
 ```
