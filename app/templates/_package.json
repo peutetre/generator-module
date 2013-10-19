@@ -10,7 +10,7 @@
   "keywords": [ ],
   "homepage": "<%= githubUrl %>/<%= _.slugify(moduleName) %>",
   "bugs": "<%= githubUrl %>/<%= _.slugify(moduleName) %>/issues",
-  "main": "lib/main.js",
+  "main": "lib/index.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/<%= githubUser %>/<%= _.slugify(moduleName) %>.git"
