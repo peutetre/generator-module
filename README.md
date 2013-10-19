@@ -28,19 +28,19 @@ Assuming a module named `my-module`
 
 ```
 my-module
+|-- Gruntfile.js
+|-- LICENSE
 |-- README.md
-|-- package.json
-|-- lib
-|   `-- index.js
-|-- test
-|   `-- test.js
-|   `-- index.html
+|-- browsers.json
 |-- example
-|   |-- package.json
 |   |-- example.js
 |   `-- index.html
-|
-`-- travis.yml
+|-- lib
+|   `-- index.js
+|-- package.json
+`-- test
+    |-- index.html
+    `-- test.js
 ```
 
 ### Usage
