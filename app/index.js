@@ -101,7 +101,7 @@ ModuleGenerator.prototype.lib = function lib() {
   this.template('_package.json', 'package.json');
   this.template('_README.md', 'README.md');
   this.template('_LICENSE', 'LICENSE');
-  this.copy('.gitignore', '.gitignore');
+  this.copy('gitignore', '.gitignore');
 };
 
 ModuleGenerator.prototype.test = function test() {
@@ -113,7 +113,7 @@ ModuleGenerator.prototype.test = function test() {
 ModuleGenerator.prototype.ci = function saucelabs() {
   this.template('_Gruntfile.js', 'Gruntfile.js');
   this.copy('browsers.json', 'browsers.json');
-  this.copy('.travis.yml', '.travis.yml');
+  this.copy('travis.yml', '.travis.yml');
 };
 
 ModuleGenerator.prototype.example = function example() {

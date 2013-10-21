@@ -98,7 +98,7 @@ npm test
 
 ## ChangeLog
 
-#### v0.0.1 2013-10-18
+#### v0.0.1 2013-10-21
 
 * minimal release
 
