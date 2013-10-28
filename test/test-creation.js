@@ -23,14 +23,23 @@ describe('module generator', function () {
     var expected = [
       'package.json',
       'lib/index.js',
-      'README.md'
+      'README.md',
+      'Gruntfile.js',
+      'example/example.js',
+      'example/index.html',
+      '.gitignore',
+      'browsers.json',
+      '.travis.yml',
+      'test/test.js',
+      'test/index.html'
     ];
 
     helpers.mockPrompt(this.app, {
       'githubUser': 'peutetre',
       'moduleName': 'test',
       'moduleDescription': 'This is a test',
-      'dependencies': 'q, zanimo, qajax'
+      'dependencies': 'q, zanimo, qajax',
+      'saucelabUser':'empty'
     });
 
     this.app.run({}, function () {
