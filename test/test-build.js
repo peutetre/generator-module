@@ -10,7 +10,7 @@ function ok(expr, msg) {
 }
 
 describe('module generator', function () {
-  beforeEach(function (done) {
+  before(function (done) {
     helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
       if (err) {
         return done(err);
@@ -19,19 +19,19 @@ describe('module generator', function () {
       this.app = helpers.createGenerator('module:app', [
         '../../app'
       ]);
+      helpers.mockPrompt(this.app, {
+        'githubUser': 'peutetre',
+        'moduleName': 'test',
+        'moduleDescription': 'This is a test',
+        'dependencies': 'q, zanimo, qajax',
+        'saucelabUser':'empty'
+      });
       done();
     }.bind(this));
   });
 
   it('npm run build-test should return 0', function (done) {
     this.timeout(5000);
-    helpers.mockPrompt(this.app, {
-      'githubUser': 'peutetre',
-      'moduleName': 'test',
-      'moduleDescription': 'This is a test',
-      'dependencies': 'q, zanimo, qajax',
-      'saucelabUser':'empty'
-    });
 
     this.app.run({}, function (e) {
       var child = exec('../../node_modules/browserify/bin/cmd.js ./test/test.js -o ./test/main.js --debug',
@@ -44,20 +44,12 @@ describe('module generator', function () {
 
   it('npm run build-example should return 0', function (done) {
     this.timeout(5000);
-    helpers.mockPrompt(this.app, {
-      'githubUser': 'peutetre',
-      'moduleName': 'test',
-      'moduleDescription': 'This is a test',
-      'dependencies': 'q, zanimo, qajax',
-      'saucelabUser':'empty'
-    });
 
-    this.app.run({}, function (e) {
-      var child = exec('../../node_modules/browserify/bin/cmd.js ./example/example.js -o ./example/main.js --debug',
-        function (error, stdout, stderr) {
-          ok(error === null, 'exec error: ' + error);
-          done();
-      });
+    var child = exec('../../node_modules/browserify/bin/cmd.js ./example/example.js -o ./example/main.js --debug',
+      function (error, stdout, stderr) {
+        ok(error === null, 'exec error: ' + error);
+        done();
     });
   });
+
 });
