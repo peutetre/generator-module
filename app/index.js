@@ -24,10 +24,11 @@ var ModuleGenerator = module.exports = function ModuleGenerator(args, options, c
   yeoman.generators.Base.apply(this, arguments);
 
   this.on('end', function () {
-    console.log();
-    console.log("Dont' forget to excute to add your saucelab username and token:");
-    console.log("travis encrypt SAUCE_USERNAME=your-username --add");
-    console.log("travis encrypt SAUCE_ACCESS_KEY=your-token --add");
+    this.log.write()
+            .info("Dont' forget to execute `travis` to add your saucelab username and token:")
+            .info("travis encrypt SAUCE_USERNAME=your-username --add")
+            .info("travis encrypt SAUCE_ACCESS_KEY=your-token --add");
+
     this.installDependencies({
         npm: true,
         bower: false
