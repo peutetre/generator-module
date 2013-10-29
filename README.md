@@ -24,7 +24,7 @@ $ yo module
 
 Assuming a module named `my-module`
 
-### Folders and files tree
+### Generated tree
 
 ```
 my-module
@@ -56,13 +56,13 @@ npm install
 ```javascript
 var aModule = require('my-module');
 
-// by default, the generator scarffold a function as default module implementation
+// by default, the generator scaffold a function as default module implementation
 aModule();
 ```
 
 #### import the old school style
 
-just import the `lib/index.js` script
+just import the `lib/index.js` script.
 
 ### Module example
 

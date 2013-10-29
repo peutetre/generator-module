@@ -19,7 +19,7 @@ $ npm install <%= _.slugify(moduleName) %>
 ```javascript
 var aModule = require('<%= _.slugify(moduleName) %>');
 
-// by default, the generator scarffold a function as default module implementation
+// by default, the generator scaffold a function as default module implementation
 aModule();
 ```
 
