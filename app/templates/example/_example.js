@@ -2,5 +2,5 @@
  * example.js
  */
 
-var <%= moduleName %> = require('../lib/index.js');
-console.log(<%= moduleName %>());
+var <%= _.camelize(moduleName) %> = require('../lib/index.js');
+console.log(<%= _.camelize(moduleName) %>());

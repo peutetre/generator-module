@@ -6,7 +6,7 @@
     if (typeof exports === "object") {
         module.exports = definition();
     } else {
-        <%= moduleName %> = definition();
+        <%= _.camelize(moduleName) %> = definition();
     }
 })(function () {
     return function () {
