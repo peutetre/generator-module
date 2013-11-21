@@ -25,7 +25,9 @@ var ModuleGenerator = module.exports = function ModuleGenerator(args, options, c
 
   this.on('end', function () {
     this.log.write()
-            .info("Dont' forget to execute `travis` to add your saucelab username and token:")
+            .info("Setting Saucelabs:")
+            .info("After turning on Travis service on your github repository,")
+            .info("don't forget to execute `travis` to add your saucelab username and token:")
             .info("travis encrypt SAUCE_USERNAME=your-username --add")
             .info("travis encrypt SAUCE_ACCESS_KEY=your-token --add");
 
