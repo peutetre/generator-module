@@ -98,6 +98,10 @@ npm test
 
 ## ChangeLog
 
+#### v0.0.2 2013-11-21
+
+* [FIX] camelize module name in source files
+
 #### v0.0.1 2013-10-21
 
 * minimal release
